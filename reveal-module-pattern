@@ -1,1 +1,27 @@
+let myFun = (function () {
+    //Private Member
+    let counter = 6, i = 0;       
 
+    //Private Method
+    function updateCounter() {    
+        counter += i;
+        console.log(`'i' is incremented by ${i} and Counter is updated to ${counter}`
+        );
+    };
+
+    //Public Method
+    function updateI() {
+        i += 3;
+        updateCounter();
+    };
+
+    return {
+        updateMember: updateI
+    };
+})();
+
+myFun.updateMember();                   //9
+myFun.updateMember();                   //14
+myFun.updateMember();                   //24
+myFun.updateMember();                   //36
+myFun.updateMember();                   //51
