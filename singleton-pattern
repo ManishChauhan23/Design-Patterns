@@ -1,1 +1,44 @@
 
+let MyNameSpace = {};
+
+MyNameSpace.Singleton = (function () {
+    let singletonInstance;
+
+    function constructor() {
+        let lionelMessi = 50;
+        let cristianoRonaldo = 45;
+
+        //Private Method
+        function messiGoalsEachSeason() {
+            lionelMessi += 50;
+        };
+
+        //Private Method
+        function ronaldoGoalsEachSeason() {
+            cristianoRonaldo += 45;
+        };
+
+        //Public Method
+        function totalGoals() {
+            console.log(lionelMessi + cristianoRonaldo);
+            messiGoalsEachSeason();
+            ronaldoGoalsEachSeason();
+        };
+
+        return {
+            totalGoals: totalGoals
+        }
+    }
+
+    return {
+        getTotalGoals: function () {
+            if (!singletonInstance)  return singletonInstance = constructor();
+            else return singletonInstance;
+        }
+    }
+})();
+
+console.log(MyNameSpace.Singleton.getTotalGoals().totalGoals());
+console.log(MyNameSpace.Singleton.getTotalGoals().totalGoals());
+console.log(MyNameSpace.Singleton.getTotalGoals().totalGoals());
+console.log(MyNameSpace.Singleton.getTotalGoals().totalGoals());
