@@ -1,0 +1,18 @@
+const Foo = {
+    init: function (x) {
+        this.x = x;
+    },
+    identity: function () {
+        return `${this.x}`
+    }
+};
+
+const bar = Object.create(Foo);
+
+bar.speak = function () {
+    return `${this.identity()}`
+}
+
+const b1 = Object.create(bar);
+b1.init(26);
+console.log(b1.speak())
