@@ -1,0 +1,12 @@
+function outerFunction(cb) {
+    setTimeout(function () {
+        var num = Number(Math.random().toFixed(1));
+        if (num > 0.5) cb(false, num);             
+        else cb('Smaller than 0.5');              
+    }, 2500)
+}
+
+outerFunction(function (err, val) {                //error first style coding
+    if (err) console.log(err);
+    else console.log(val);
+})
