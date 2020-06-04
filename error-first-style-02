@@ -1,0 +1,29 @@
+// The Asyncronous Method
+function strictAddition(x, y, callback) {
+  if(typeof x !== 'number') {
+    callback( new Error('First argument is not a number') );
+    return;
+  }
+  if(typeof y !== 'number') {
+    callback( new Error('Second argument is not a number') );
+    return;
+  }
+  var result = x + y;
+  setTimeout(function() {
+    callback(null, result);
+  }, 500);  
+}
+
+function callback(err, data) {               //Callback
+  if(err) {
+    console.log(err);
+    return;
+  }
+  console.log(data);
+}
+
+strictAddition(2,  10, callback); // 12
+strictAddition(-2, 10, callback); // 8
+strictAddition('str', 10, callback); // Error = "First argument is not a number"
+strictAddition(2, '10', callback); // // Error = "Second argument is not a number"
+
